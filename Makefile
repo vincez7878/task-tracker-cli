@@ -6,6 +6,9 @@ exec: bin/exec
 bin/exec: ./src/driver.cc
 	$(CXX) $(CXX_FLAGS) ./src/driver.cc -o $@
 
+bin/tests: ./src/tests.cc
+	$(CXX) $(CXX_FLAGS) ./src/tests.cc -o $@
+
 .DEFAULT_GOAL := exec
 .PHONY: exec clean
 

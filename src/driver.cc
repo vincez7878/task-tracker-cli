@@ -1,15 +1,14 @@
+#include "task.hpp"
+
 #include <iostream>
-#include <map>
+#include <string>
+#include <vector>
+#include <ctime>
 
-int main() {
-  // constexpr char kConsonants[] = {'p', 'k', 'h', 'l', 'm', 'n', 'w'};
-  std::map<int, char> example = {{1, 'a'}, {2, 'b'}};
-
-  for (int x : {2, 5}) {
-    if (example.contains(x)) {
-      std::cout << x << ": Found\n";
-    } else {
-      std::cout << x << ": Not found\n";
-    }
+int main(int argc, char* argv[]) {
+  std::vector<std::string> cmd_line_args;
+  for (int i = 0; i < argc; ++i) {
+    std::string curr_string = argv[i];
+    cmd_line_args.push_back(curr_string);
   }
 }
