@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
   std::vector<Task> tasks;
   Task t(static_cast<int>(tasks.size()) + 1, cmd_line_args[2]);
   std::cout << t.TaskOut() << '\n';
-  std::string new_description = "Wtf are we doing lol";
+  std::string new_description = "working?";
   t.UpdateTask(new_description);
   std::cout << t.TaskOut() << '\n';
 }
