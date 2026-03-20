@@ -1,7 +1,6 @@
 #include "task.hpp"
 
-Task::Task(std::string& description, int identifier) :
-description_(description), identifier_(identifier), status_("Todo") {
+Task::Task(int identifier, std::string& description) : identifier_(identifier), description_(description), status_("Todo") {
     std::time_t curr_time = time(nullptr);
     time_created_ = ctime(&curr_time);
     time_updated_ = ctime(&curr_time);
@@ -9,10 +8,17 @@ description_(description), identifier_(identifier), status_("Todo") {
 
 void Task::UpdateTask(std::string& new_description) {
     description_ = new_description;
+    std::time_t curr_time = time(nullptr);
+    time_updated_ = ctime(&curr_time);
 }
 
 void Task::MarkTask(std::string& mark) {
     status_ = mark;
+}
+
+std::string Task::TaskOut() {
+    std::string task = std::to_string(identifier_) + ": " + description_ + " - " + time_updated_;
+    return task;
 }
 
 int Task::GetId() const {

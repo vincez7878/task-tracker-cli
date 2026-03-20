@@ -6,9 +6,10 @@
 
 class Task {
     public:
-        Task(std::string& description, int identifier);
+        Task(int identifier, std::string& description);
         void UpdateTask(std::string& new_description); //updates the task description with a new one
         void MarkTask(std::string& mark); //marks a new status e.g in-progress, done
+        std::string TaskOut(); //returns a string describing the task in format ID: Description - time updated
         int GetId() const;
         std::string GetDescription() const;
         std::string GetStatus() const;
