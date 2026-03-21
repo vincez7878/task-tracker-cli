@@ -1,18 +1,23 @@
 #include "task.hpp"
 
-Task::Task(int identifier, std::string& description) : identifier_(identifier), description_(description), status_("todo") {
+Task::Task(int identifier, const std::string& description, const std::string& status, 
+    const std::string& time_created, const std::string& time_updated) : identifier_(identifier), 
+    description_(description), status_(status), time_created_(time_created), 
+    time_updated_(time_updated) {};
+
+Task::Task(int identifier, const std::string& description) : identifier_(identifier), description_(description), status_("todo") {
     std::time_t curr_time = time(nullptr);
     time_created_ = ctime(&curr_time);
     time_updated_ = ctime(&curr_time);
 }
 
-void Task::UpdateTask(std::string& new_description) {
+void Task::UpdateTask(const std::string& new_description) {
     description_ = new_description;
     std::time_t curr_time = time(nullptr);
     time_updated_ = ctime(&curr_time);
 }
 
-void Task::MarkTask(std::string& mark) {
+void Task::MarkTask(const std::string& mark) {
     status_ = mark;
 }
 

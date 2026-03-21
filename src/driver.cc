@@ -8,6 +8,7 @@
 #include <stdexcept>
 
 int main(int argc, char* argv[]) {
+  std::vector<Task> tasks; //read from json file into here
   std::vector<std::string> cmd_line_args; //Vector storing user input commands
 
   try {
@@ -23,9 +24,8 @@ int main(int argc, char* argv[]) {
     if (cmd_line_args.size() > 4) {
       throw std::runtime_error("too many commands :(");
     }
-
-    std::vector<Task> tasks;
     RouteCommands(cmd_line_args, tasks);
+    //update json file here
   }
 
   catch(std::exception& e) {
