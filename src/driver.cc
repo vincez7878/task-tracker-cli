@@ -12,10 +12,5 @@ int main(int argc, char* argv[]) {
     cmd_line_args.push_back(curr_string);
   }
 
-  std::vector<Task> tasks;
-  Task t(static_cast<int>(tasks.size()) + 1, cmd_line_args[2]);
-  std::cout << t.TaskOut() << '\n';
-  std::string new_description = "working?";
-  t.UpdateTask(new_description);
-  std::cout << t.TaskOut() << '\n';
+  std::vector<Task> tasks; //vector with all current tasks opened
 }
