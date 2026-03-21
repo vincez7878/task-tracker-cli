@@ -18,6 +18,6 @@ void MarkTask(std::vector<std::string>& commands, std::vector<Task>& tasks);
 
 void ListTasks(std::vector<std::string>& commands, std::vector<Task>& tasks);
 
-void ListTasksByStatus();
+void ListTasksByStatus(std::vector<std::string>& commands, std::vector<Task>& tasks);
 
 #endif

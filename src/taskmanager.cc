@@ -1,7 +1,5 @@
 #include "taskmanager.hpp"
 
-
-
 void RouteCommands(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (commands[1] == "add") {
         AddTask(commands, tasks);
@@ -23,18 +21,21 @@ void RouteCommands(std::vector<std::string>& commands, std::vector<Task>& tasks)
         return;
     }
 
-    if (commands[1] == "list" && commands.size() == 2) { //list all
+    if (commands[1] == "list" && commands.size() == 2) {
+        ListTasks(commands, tasks);
         return;
     }
 
     if (commands[1] == "list" && (commands[2] == "todo" || commands[2] == "in-progress"
         || commands[2] == "done")) {
+            ListTasks(commands, tasks);
         return;
     }
 
     throw std::runtime_error("Invalid command");
 }
 
+//expect form: ./bin/exec add "task description"
 void AddTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (commands.size() != 3) {
         throw std::runtime_error("Invalid Command");
@@ -45,7 +46,8 @@ void AddTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     std::cout << "task added successfully - ID: " << std::to_string(curr_task.GetId()) << '\n';
 }
 
-void UpdateTask(std::vector<std::string>& commands, std::vector<Task>& tasks) { //Something fishy here
+//expect form: ./bin/exec update 1 "update message"
+void UpdateTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (commands.size() != 4) {
         throw std::runtime_error("Invalid Command");
     }
@@ -110,6 +112,7 @@ void MarkTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     throw std::runtime_error("task ID not found");
 }
 
+//expect form: ./bin/exec list
 void ListTasks(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (commands.size() != 2) {
         throw std::runtime_error("Invalid Command");
@@ -117,6 +120,7 @@ void ListTasks(std::vector<std::string>& commands, std::vector<Task>& tasks) {
 
     if (tasks.empty()) {
         std::cout << "No tasks yet!" << '\n';
+        return;
     }
 
     for (unsigned int i = 0; i < tasks.size(); ++i) {
@@ -124,4 +128,38 @@ void ListTasks(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     }
 }
 
-void ListTasksByStatus() {};
+//expect form: ./bin/exec list todo
+void ListTasksByStatus(std::vector<std::string>& commands, std::vector<Task>& tasks) {
+    if (commands.size() != 3) {
+        throw std::runtime_error("Invalid Command");
+    }
+
+    if (tasks.empty()) {
+        std::cout << "No tasks yet!" << '\n';
+        return;
+    }
+
+    if (commands[2] == "todo") {
+        for (unsigned int i = 0; i < tasks.size(); ++i) {
+            if (tasks.at(i).GetStatus() == "todo") {
+                std::cout << tasks.at(i).TaskOut() << '\n' << '\n';
+            }
+        }
+    }
+
+    if (commands[2] == "in-progress") {
+        for (unsigned int i = 0; i < tasks.size(); ++i) {
+            if (tasks.at(i).GetStatus() == "in-progress") {
+                std::cout << tasks.at(i).TaskOut() << '\n' << '\n';
+            }
+        }
+    }
+
+    if (commands[2] == "done") {
+        for (unsigned int i = 0; i < tasks.size(); ++i) {
+            if (tasks.at(i).GetStatus() == "done") {
+                std::cout << tasks.at(i).TaskOut() << '\n' << '\n';
+            }
+        }
+    }
+}
