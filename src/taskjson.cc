@@ -12,7 +12,10 @@ void ToJson(json& j, const std::vector<Task>& tasks) {
 }
 
 void FromJson(const json& j, std::vector<Task>& tasks) {
-    //parse the json file and push back each member to tasks
+    //parse the json file and push back each member to tasks. If no file exists yet, return and tasks will stay empty
+    if (j.empty()) {
+        return;
+    }
     for (const auto& task : j) {
         Task curr_task(task["ID"], task["Description"], 
         task["Status"], task["Created At"], task["Updated At"]);

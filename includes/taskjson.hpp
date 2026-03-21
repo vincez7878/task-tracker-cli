@@ -1,15 +1,11 @@
 #ifndef TASKJSON_HPP
 #define TASKJSON_HPP
 
-#include <fstream>
-
-#include "json.hpp"
 #include "task.hpp"
 #include "taskmanager.hpp"
+#include "nlohmann/json.hpp"
 
-using json = nlohmann::json;
-
-//todo
-
+void ToJson(nlohmann::json& j, const std::vector<Task>& tasks);
+void FromJson(const nlohmann::json& j, std::vector<Task>& tasks);
 
 #endif
