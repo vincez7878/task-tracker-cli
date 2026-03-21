@@ -1,6 +1,6 @@
 #include "task.hpp"
 
-Task::Task(int identifier, std::string& description) : identifier_(identifier), description_(description), status_("Todo") {
+Task::Task(int identifier, std::string& description) : identifier_(identifier), description_(description), status_("todo") {
     std::time_t curr_time = time(nullptr);
     time_created_ = ctime(&curr_time);
     time_updated_ = ctime(&curr_time);
