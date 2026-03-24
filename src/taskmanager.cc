@@ -27,7 +27,7 @@ void RouteCommands(std::vector<std::string>& commands, std::vector<Task>& tasks)
             return;
         }
         
-        if (commands.size() == 3 && (commands[2] == "todo" || commands[2] == "in-progress" //something up here
+        if (commands.size() == 3 && (commands[2] == "todo" || commands[2] == "in-progress"
         || commands[2] == "done")) {
             ListTasksByStatus(commands, tasks);
             return;
@@ -36,7 +36,7 @@ void RouteCommands(std::vector<std::string>& commands, std::vector<Task>& tasks)
     throw std::runtime_error("Invalid command");
 }
 
-//expect form: ./bin/exec add "task description"
+//expect form: tasky add "task description"
 void AddTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (commands.size() != 3) {
         throw std::runtime_error("Invalid Command");
@@ -47,7 +47,7 @@ void AddTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     std::cout << "task added successfully - ID: " << std::to_string(curr_task.GetId()) << '\n';
 }
 
-//expect form: ./bin/exec update 1 "update message"
+//expect form: tasky update 1 "update message"
 void UpdateTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (commands.size() != 4) {
         throw std::runtime_error("Invalid Command");
@@ -72,7 +72,7 @@ void UpdateTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     throw std::runtime_error("task ID not found");
 }
 
-//expect form: ./bin/exec delete ID
+//expect form: tasky delete ID
 void DeleteTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (commands.size() != 3) { //Check if command arguments are right
         throw std::runtime_error("Invalid Command");
@@ -98,7 +98,7 @@ void DeleteTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     throw std::runtime_error("task ID not found");
 }
 
-//expect form: ./bin/exec mark 1 in-progress
+//expect form: tasky mark 1 in-progress
 void MarkTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (commands.size() != 4) {
         throw std::runtime_error("Invalid Command");
@@ -127,7 +127,7 @@ void MarkTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     throw std::runtime_error("task ID not found");
 }
 
-//expect form: ./bin/exec list
+//expect form: tasky list
 void ListTasks(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (commands.size() != 2) {
         throw std::runtime_error("Invalid Command");
@@ -143,7 +143,7 @@ void ListTasks(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     }
 }
 
-//expect form: ./bin/exec list todo
+//expect form: tasky list todo
 void ListTasksByStatus(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (commands.size() != 3) {
         throw std::runtime_error("Invalid Command");

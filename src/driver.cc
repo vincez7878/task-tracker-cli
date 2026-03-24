@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
   try {
     std::vector<std::string> cmd_line_args;
     std::vector<Task> tasks;
-    const std::string kJsonFilename = "/home/vince/projects/task-tracker-cli/output/taskfile.json"; //fill in with expected file name
+    const std::string kJsonFilename = "output/taskfile.json";
     nlohmann::json j;
     j = ReadFile(kJsonFilename);
     FromJson(j, tasks);
