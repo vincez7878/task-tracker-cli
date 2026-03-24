@@ -1,3 +1,5 @@
+Hi, I'm Vince. This is my first C++ project after taking a class at my university. Please note that as of right now this will only work in the terminal for your IDE or text editor. You can easily make this work for a Linux terminal in general by modifying the path to the JSON file on your system. I plan to keep changing and making improvements for personal use, let me know if you have any suggestions!
+
 # Project from:
 https://roadmap.sh/projects/task-tracker
 
