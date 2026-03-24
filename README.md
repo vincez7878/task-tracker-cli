@@ -9,6 +9,14 @@ https://roadmap.sh/projects/task-tracker
 
 A command-line task tracker built with C++20. Create, update, delete, and organize tasks with status tracking, all persisted to a local JSON file.
 
+## Getting started
+
+This project includes a dev container configuration. After cloning the repo, reopen it in the dev container to get the correct C++ toolchain and extensions:
+
+1. Clone the repository
+2. Open the folder in VS Code
+3. When prompted, click **Reopen in Container** (or run the command **Dev Containers: Reopen in Container** from the Command Palette)
+
 ## Build
 
 Requires `clang++` with C++20 support and `make`.
