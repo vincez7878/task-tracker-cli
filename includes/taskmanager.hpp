@@ -13,5 +13,6 @@ void DeleteTask(std::vector<std::string>& commands, std::vector<Task>& tasks);
 void MarkTask(std::vector<std::string>& commands, std::vector<Task>& tasks);
 void ListTasks(std::vector<std::string>& commands, std::vector<Task>& tasks);
 void ListTasksByStatus(std::vector<std::string>& commands, std::vector<Task>& tasks);
+int MakeId(std::vector<Task>& tasks); //todo
 
 #endif

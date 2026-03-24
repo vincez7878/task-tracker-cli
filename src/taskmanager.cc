@@ -21,17 +21,18 @@ void RouteCommands(std::vector<std::string>& commands, std::vector<Task>& tasks)
         return;
     }
 
-    if (commands[1] == "list" && commands.size() == 2) {
-        ListTasks(commands, tasks);
-        return;
-    }
-
-    if (commands[1] == "list" && (commands[2] == "todo" || commands[2] == "in-progress"
+    if (commands[1] == "list") {
+        if (commands.size() == 2) {
+             ListTasks(commands, tasks);
+            return;
+        }
+        
+        if (commands.size() == 3 && (commands[2] == "todo" || commands[2] == "in-progress" //something up here
         || commands[2] == "done")) {
-            ListTasks(commands, tasks);
-        return;
+            ListTasksByStatus(commands, tasks);
+            return;
+        }
     }
-
     throw std::runtime_error("Invalid command");
 }
 
@@ -162,4 +163,8 @@ void ListTasksByStatus(std::vector<std::string>& commands, std::vector<Task>& ta
             }
         }
     }
+}
+
+int MakeId(std::vector<Task>& tasks) { //todo
+    return 1;
 }

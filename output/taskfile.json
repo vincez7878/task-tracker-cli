@@ -1,1 +1,23 @@
-[]
+[
+    {
+        "Created At": "Sun Mar 22 22:14:49 2026\n",
+        "Description": "ME 310 HW",
+        "ID": 2,
+        "Status": "todo",
+        "Updated At": "Sun Mar 22 22:14:49 2026\n"
+    },
+    {
+        "Created At": "Mon Mar 23 10:48:48 2026\n",
+        "Description": "TAM 412 HW",
+        "ID": 3,
+        "Status": "todo",
+        "Updated At": "Mon Mar 23 10:48:48 2026\n"
+    },
+    {
+        "Created At": "Mon Mar 23 16:18:32 2026\n",
+        "Description": "Pick up TAM 412 midterm at 12:00 PM Tuesday at 3003 MEL",
+        "ID": 4,
+        "Status": "in-progress",
+        "Updated At": "Mon Mar 23 16:18:32 2026\n"
+    }
+]

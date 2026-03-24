@@ -23,6 +23,9 @@ void Task::MarkTask(const std::string& mark) {
 
 std::string Task::TaskOut() {
     std::string task = std::to_string(identifier_) + ": " + description_ + " - " + time_updated_;
+    if (task.back() == '\n') {
+        task.pop_back();
+    }
     return task;
 }
 
