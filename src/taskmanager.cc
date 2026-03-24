@@ -42,7 +42,7 @@ void AddTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
         throw std::runtime_error("Invalid Command");
     }
     std::string descr = commands[2];
-    Task curr_task(static_cast<int>(tasks.size()) + 1, descr);
+    Task curr_task(MakeId(tasks), descr);
     tasks.push_back(curr_task);
     std::cout << "task added successfully - ID: " << std::to_string(curr_task.GetId()) << '\n';
 }
@@ -165,6 +165,17 @@ void ListTasksByStatus(std::vector<std::string>& commands, std::vector<Task>& ta
     }
 }
 
-int MakeId(std::vector<Task>& tasks) { //todo
-    return 1;
+int MakeId(const std::vector<Task>& tasks) {
+    if (tasks.empty()) {
+        return 1;
+    }
+
+    int curr_max_id = tasks.at(0).GetId();
+    for (unsigned int i = 0; i < tasks.size(); ++i) {
+        if (tasks.at(i).GetId() > curr_max_id) {
+            curr_max_id = tasks.at(i).GetId();
+        }
+    }
+
+    return curr_max_id + 1;
 }
