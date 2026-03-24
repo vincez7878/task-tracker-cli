@@ -11,11 +11,8 @@ A command-line task tracker built with C++20. Create, update, delete, and organi
 
 ## Getting started
 
-This project includes a dev container configuration. After cloning the repo, reopen it in the dev container to get the correct C++ toolchain and extensions:
-
-1. Clone the repository
-2. Open the folder in VS Code
-3. When prompted, click **Reopen in Container** (or run the command **Dev Containers: Reopen in Container** from the Command Palette)
+This project includes a dev container configuration. It is not required to open the project folder in the Dev Container to run it however. Just make sure to have
+Clang++ with C++20 support and it should run fine after executing the commands below.
 
 ## Build
 
