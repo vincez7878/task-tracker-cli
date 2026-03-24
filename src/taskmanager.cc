@@ -56,14 +56,18 @@ void UpdateTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (tasks.empty()) {
         throw std::runtime_error("No tasks yet!");
     }
-
-    int id_to_update = stoi(commands[2]);
-    for (unsigned int i = 0; i < tasks.size(); ++i) {
-        if (id_to_update == tasks.at(i).GetId()) {
-            tasks.at(i).UpdateTask(commands[3]);
-            std::cout << "task updated successfully - ID: " << std::to_string(id_to_update) << '\n';
-            return;
+    try {
+        int id_to_update = stoi(commands[2]);
+        for (unsigned int i = 0; i < tasks.size(); ++i) {
+            if (id_to_update == tasks.at(i).GetId()) {
+                tasks.at(i).UpdateTask(commands[3]);
+                std::cout << "task updated successfully - ID: " << std::to_string(id_to_update) << '\n';
+                return;
+            }
         }
+    }
+    catch (std::invalid_argument&) {
+        throw(std::runtime_error("Please Input Task ID"));
     }
     throw std::runtime_error("task ID not found");
 }
@@ -78,13 +82,18 @@ void DeleteTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
         throw std::runtime_error("No tasks yet!");
     }
 
-    int id_to_del = stoi(commands[2]);
-    for (unsigned int i = 0; i < tasks.size(); ++i) {
-        if (id_to_del == tasks.at(i).GetId()) {
-            tasks.erase(tasks.begin() + i);
-            std::cout << "task deleted successfully - ID: " << std::to_string(id_to_del) << '\n';
-            return;
+    try {
+        int id_to_del = stoi(commands[2]);
+        for (unsigned int i = 0; i < tasks.size(); ++i) {
+            if (id_to_del == tasks.at(i).GetId()) {
+                tasks.erase(tasks.begin() + i);
+                std::cout << "task deleted successfully - ID: " << std::to_string(id_to_del) << '\n';
+                return;
+            }
         }
+    }
+    catch (std::invalid_argument&) {
+        throw (std::runtime_error("Please Input task ID"));
     }
     throw std::runtime_error("task ID not found");
 }
@@ -102,13 +111,18 @@ void MarkTask(std::vector<std::string>& commands, std::vector<Task>& tasks) {
     if (commands[3] != "in-progress" && commands[3] != "done") {
         throw std::runtime_error("Please mark task either in-progress or done");
     }
-    int id_to_mark = stoi(commands[2]);
-    for (unsigned int i = 0; i < tasks.size(); ++i) {
-        if (id_to_mark == tasks.at(i).GetId()) {
-            tasks.at(i).MarkTask(commands[3]);
-            std::cout << "task marked successfully - ID: " << std::to_string(id_to_mark) << '\n';
-            return;
+    try {
+        int id_to_mark = stoi(commands[2]);
+        for (unsigned int i = 0; i < tasks.size(); ++i) {
+            if (id_to_mark == tasks.at(i).GetId()) {
+                tasks.at(i).MarkTask(commands[3]);
+                std::cout << "task marked successfully - ID: " << std::to_string(id_to_mark) << '\n';
+                return;
+            }
         }
+    }
+    catch (std::invalid_argument&) {
+        throw std::runtime_error("Please Input Task ID");
     }
     throw std::runtime_error("task ID not found");
 }
